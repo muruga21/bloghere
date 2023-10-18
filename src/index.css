@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@300;500&display=swap');
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +12,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+  background-color: #f3f5f7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: nunito;
+  src: url("../public/Nunito-VariableFont_wght.ttf");
 }
+
+@font-face {
+  font-family: satoshi;
+  src: url("../public/Satoshi-Bold.ttf");
+}
+
