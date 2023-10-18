@@ -26,7 +26,9 @@ Before you begin, ensure you have the following installed:
 1. Clone this repository: `git clone https://github.com/muruga21/BlogHere`
 2. Move to the project directory: `cd your-blog-website`
 3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
+4. Install tailwind: `npm install tailwindcss`
+5. Start the development server: `npm start`
+   
 
 Your blog website should now be accessible at `http://localhost:3000`.
 
