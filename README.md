@@ -33,6 +33,9 @@ Before you begin, ensure you have the following installed:
 
 Your blog website should now be accessible at `http://localhost:3000`.
 
+<img width="960" alt="image" src="https://github.com/muruga21/BlogHere/assets/112178257/990ebc7c-f6ed-48d9-b7f3-55eedb675c8e">
+
+
 ## Usage
 - Visit your website in your browser.
 - Sign up, create, and share your blogs!
