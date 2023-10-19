@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Hero from './components/Hero';
+import Blogview from './components/Blogview';
+
+const approuter = createBrowserRouter([
+  {
+    path: '/',
+    element: <App/>,
+    children:[
+      {
+        path:'/',
+        element:<Hero/>
+      },
+      {
+        path:'/:blogid',
+        element:<Blogview/>
+      }
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={approuter}/>
   </React.StrictMode>
 );
 

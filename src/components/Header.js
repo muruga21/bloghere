@@ -13,9 +13,6 @@ const Header = () => {
         </logo>
         <nav-ele>
             <ul className='flex text-xl font-medium justify-center item-center'>
-                <li className='mr-5 hover:border-red-400 hover:border-b-2 md:mr-10'>
-                    Write
-                </li>
                 <li className=' hover:border-red-400 hover:border-b-2 md:mr-10'>
                     {
                         islogin ?(

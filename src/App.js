@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import Blogs from './components/Blogs';
 import Header from './components/Header';
@@ -9,8 +10,8 @@ function App() {
       <section>
         <Header/>
       </section>
-      <section className='w-[100%] flex justify-center items-center h-[50vh]'>
-        <Hero/>
+      <section className='w-[100%] flex justify-center items-center h-[auto]'>
+        <Outlet/>
       </section>
       <section className='w-[100%] h-[100vh] flex justify-center'>
         <Blogs/>
