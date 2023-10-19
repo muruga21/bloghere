@@ -1,4 +1,5 @@
 import './App.css';
+import Blogs from './components/Blogs';
 import Header from './components/Header';
 import Hero from './components/Hero';
 
@@ -8,8 +9,11 @@ function App() {
       <section>
         <Header/>
       </section>
-      <section className='w-[100%] flex justify-center items-center h-[60vh]'>
+      <section className='w-[100%] flex justify-center items-center h-[50vh]'>
         <Hero/>
+      </section>
+      <section className='w-[100%] h-[100vh] flex justify-center'>
+        <Blogs/>
       </section>
     </div>
   );
