@@ -27,7 +27,8 @@ Before you begin, ensure you have the following installed:
 2. Move to the project directory: `cd your-blog-website`
 3. Install dependencies: `npm install`
 4. Install tailwind: `npm install tailwindcss`
-5. Start the development server: `npm start`
+5. Install react-router-dom: `npm install react-router-dom`
+6. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
