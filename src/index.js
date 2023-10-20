@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Hero from './components/Hero';
 import Blogview from './components/Blogview';
+import Login from './components/Login';
+import Register from './components/Register';
 
 const approuter = createBrowserRouter([
   {
@@ -19,8 +21,16 @@ const approuter = createBrowserRouter([
       {
         path:'/:blogid',
         element:<Blogview/>
-      }
+      },
     ]
+  },
+  {
+    path:'/login',
+    element:<Login/>
+  },
+  {
+    path:'/register',
+    element:<Register/>
   }
 ])
 

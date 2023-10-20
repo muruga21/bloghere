@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import datas from './datas';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-    const [islogin , setIsLogin] = useState(true);
+    const [islogin , setIsLogin] = useState(false);
     const userName = datas[0].userName;
 
   return (
@@ -17,7 +18,7 @@ const Header = () => {
                     {
                         islogin ?(
                             <div>{'@'+userName}</div>
-                        ):("login")
+                        ):<Link to={'/login'}>Login</Link>
                     }
                 </li>
             </ul>
