@@ -24,11 +24,13 @@ Before you begin, ensure you have the following installed:
 
 ### Installation
 1. Clone this repository: `git clone https://github.com/muruga21/BlogHere`
-2. Move to the project directory: `cd your-blog-website`
+2. Move to the project directory: `cd bloghere`
 3. Install dependencies: `npm install`
 4. Install tailwind: `npm install tailwindcss`
 5. Install react-router-dom: `npm install react-router-dom`
-6. Start the development server: `npm start`
+6. Install express: `npm install express`
+7. Install cors: `npm install cors`
+8. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
