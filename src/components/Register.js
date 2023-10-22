@@ -5,8 +5,13 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = (e) =>{
+  const handleRegister = async (e) =>{
     e.preventDefault();
+    await fetch('http://localhost:5000/register',{
+      method:'POST',
+      body: JSON.stringify({username,password}),
+      headers : {'Content-Type' : 'application/json'},
+    })
   }
   return (
     <form className='flex justify-center items-center flex-col gap-10 h-[100vh] text-[#333]'>

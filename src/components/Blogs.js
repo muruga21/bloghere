@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react'
-import datas from './datas'
+import React, { useEffect, useState } from 'react'
 import Search from './Search';
 import { Link } from 'react-router-dom';
 
 const Blogs = () => {
-  const userBlogs = datas[0].blogs;
+  const [blogs,setBlogs] = useState([]);
 
-  console.log(datas);
+  useEffect(()=>{
+    const datas = async ()=> {
+      const response = await fetch("http://localhost:5000/blogs");
+      const blogdata = await response.json();
+      setBlogs(blogdata);
+    }
+    datas();
+  },[])
 
   return (
     
@@ -16,14 +22,14 @@ const Blogs = () => {
       </div>
        <div className='flex justify-center flex-col gap-10 sm:p-10'>
         {
-          userBlogs.map((blog ,key)=>{
+          blogs.map((blog ,key)=>{
             return(
-              <Link to={'/'+key}>
-              <div className='flex flex-col p-10 md:flex-row gap-5 hover:shadow-lg rounded-md'>
+              <Link to={'/'+blog.blogid} key={key}>
+              <div className='flex flex-col p-5 md:flex-row gap-5 hover:shadow-lg rounded-md'>
                 <div className=' w-full sm:min-w-[35%]'>
                   <img src={blog.image}></img>
                 </div>
-                <div className=' w-full sm:min-w-[65%] flex flex-col gap-5'>
+                <div className=' w-full sm:min-w-[65%] flex flex-col justify-between gap-5'>
                   <div>{blog.title}</div>
                   <div className=' font-sans'>{blog.content}</div>
                 </div>
