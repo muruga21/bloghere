@@ -1,6 +1,9 @@
 
 Welcome to BlogHere! This platform allows users to write and share their blogs. We're excited to have you here, and we're open to contributions from the community.
 
+![image](https://github.com/muruga21/bloghere/assets/112178257/e13ab82a-126a-4ba3-9f2a-b7f25bcf96d7)
+
+
 ## Table of Contents
 - [Features](#features)
 - [Getting Started](#getting-started)
