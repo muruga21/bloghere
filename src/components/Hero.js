@@ -14,7 +14,8 @@ const Hero = () => {
     </div>
     <section className='w-[100%] flex justify-center'>
     <Blogs/>
-  </section>
+    </section>
+    <button className='top-[90%] left-[90%] bg-[#333] text-[#f3f5f7] p-2 w-20 fixed hover:text-[#333] hover:bg-[#f3f5f7] hover:border-1-[#333]'>add</button>
   </div>
   )
 }
