@@ -1,5 +1,6 @@
 import React from 'react'
 import Blogs from './Blogs'
+import { Link } from 'react-router-dom'
 const Hero = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
@@ -15,7 +16,7 @@ const Hero = () => {
     <section className='w-[100%] flex justify-center'>
     <Blogs/>
     </section>
-    <button className='top-[85%] left-[70%] sm:left-[85%] bg-[#333] text-[#f3f5f7] p-3 fixed hover:text-[#333] hover:bg-[#f3f5f7] hover:border-1-[#333]'>add Blog</button>
+    <Link className='top-[85%] left-[70%] rounded-md sm:left-[85%] bg-[#333] text-[#f3f5f7] p-3 fixed hover:text-[#333] hover:bg-[#f3f5f7]' to={'/addblog'}>add Blog</Link>
   </div>
   )
 }

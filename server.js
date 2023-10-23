@@ -26,6 +26,11 @@ app.post("/register",(req,res)=>{
     res.json("got a request");
 })
 
+app.post("/addblog",(req,res)=>{
+    console.log(req.body);
+    res.status(200);
+})
+
 app.get("/blog/:blogid", (req, res) => {
     const {blogid} = req.params;
     const blog = datas.find(datas => datas.blogid == blogid);

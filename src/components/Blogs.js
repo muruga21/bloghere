@@ -20,7 +20,7 @@ const Blogs = () => {
       <div className='flex justify-center items-center'>
       <Search/>
       </div>
-       <div className='flex justify-center flex-col gap-10 sm:p-10'>
+       <div className='flex justify-center flex-col-reverse gap-10 sm:p-10'>
         {
           blogs.map((blog ,key)=>{
             return(

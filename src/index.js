@@ -8,6 +8,7 @@ import Hero from './components/Hero';
 import Blogview from './components/Blogview';
 import Login from './components/Login';
 import Register from './components/Register';
+import Addblog from './components/Addblog';
 
 const approuter = createBrowserRouter([
   {
@@ -21,7 +22,10 @@ const approuter = createBrowserRouter([
       {
         path:'/:blogid',
         element:<Blogview/>
-      },
+      },{
+        path:'/addblog',
+        element:<Addblog/>
+      }
     ]
   },
   {
