@@ -10,17 +10,17 @@ const Addblog = () => {
   const handleAddblog = async (e) =>{
     if(blogTitle=="" || imgUrl=="" || description=="" || content==""){
       alert("Please fill the information");
+      e.preventDefault();
     }
-    const userName = "muruga21";
-    let id = Math.random() *20;
-    e.preventDefault();
-    const response = await fetch("http://localhost:5000/addblog",{
-      method:'POST',
-      body: JSON.stringify({id,userName,blogTitle,imgUrl,content,description}),
-      headers: { 'Content-Type': 'application/json' },
-    })
-
-    console.log(response.json);
+    else{
+      const userName = "muruga21";
+      let id = Math.random() *20;
+      const response = await fetch("http://localhost:5000/addblog",{
+        method:'POST',
+        body: JSON.stringify({id,userName,blogTitle,imgUrl,content,description}),
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
 
   }
 
