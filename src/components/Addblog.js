@@ -8,7 +8,7 @@ const Addblog = () => {
   const [content, setContent] = useState("");
 
   const handleAddblog = async (e) =>{
-    if(!blogTitle && !imgUrl && !description && !content){
+    if(blogTitle=="" || imgUrl=="" || description=="" || content==""){
       alert("Please fill the information");
     }
     const userName = "muruga21";
@@ -16,11 +16,11 @@ const Addblog = () => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/addblog",{
       method:'POST',
-      body: JSON.stringify({id,userName,blogTitle, imgUrl,content,description}),
-      headers : {'Content-Type' : 'addingblog'},
+      body: JSON.stringify({id,userName,blogTitle,imgUrl,content,description}),
+      headers: { 'Content-Type': 'application/json' },
     })
 
-    console.log("done");
+    console.log(response.json);
 
   }
 

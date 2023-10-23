@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 app.use(cors());
-
+app.use(bodyParser.json());
 
 const datas = require("./src/components/datas.json");
 const {users} = require("./src/components/userdatas.json");
@@ -27,8 +28,21 @@ app.post("/register",(req,res)=>{
 })
 
 app.post("/addblog",(req,res)=>{
-    console.log(req.body);
-    res.status(200);
+    
+    const { id, userName, blogTitle, imgUrl, content, description } = req.body;
+
+    const data = {
+        "id":id,
+        "userName":userName,
+        "blogTitle":blogTitle,
+        "imgUrl":imgUrl,
+        "content":content,
+        "description":description
+    }
+
+    datas.push(data);
+    console.log(datas);
+    res.sendStatus(200);
 })
 
 app.get("/blog/:blogid", (req, res) => {
