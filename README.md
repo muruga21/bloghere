@@ -33,7 +33,8 @@ Before you begin, ensure you have the following installed:
 5. Install react-router-dom: `npm install react-router-dom`
 6. Install express: `npm install express`
 7. Install cors: `npm install cors`
-8. Start the development server: `npm start`
+8. Install body-parser: `npm install body-parser`
+9. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
