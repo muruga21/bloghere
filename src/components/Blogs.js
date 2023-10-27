@@ -25,7 +25,7 @@ const Blogs = () => {
           blogs.map((blog ,key)=>{
             return(
               <Link to={'/'+blog.blogid} key={key}>
-              <div className='flex flex-col p-5 md:flex-row gap-5 hover:shadow-lg rounded-md'>
+              <div className='flex flex-col p-5 md:flex-row gap-5 hover:shadow-lg rounded-md border-b-2'>
                 <div className=' w-full sm:min-w-[35%]'>
                   <img src={blog.image}></img>
                 </div>

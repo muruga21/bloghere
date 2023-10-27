@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Addblog = () => {
 
@@ -8,7 +8,7 @@ const Addblog = () => {
   const [content, setContent] = useState("");
 
   const handleAddblog = async (e) =>{
-    if(blogTitle=="" || imgUrl=="" || description=="" || content==""){
+    if(blogTitle==="" || imgUrl==="" || description==="" || content===""){
       alert("Please fill the information");
       e.preventDefault();
     }
@@ -21,7 +21,6 @@ const Addblog = () => {
         headers: { 'Content-Type': 'application/json' },
       })
     }
-
   }
 
   return (

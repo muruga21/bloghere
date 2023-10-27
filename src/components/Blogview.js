@@ -31,6 +31,9 @@ const Blogview = () => {
               {blog.content}
           </div>
         </div>
+        <div className='w-[90%]'>
+            {blog.description}
+        </div>
       </div>
     </div>
   )
