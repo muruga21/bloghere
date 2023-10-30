@@ -34,7 +34,8 @@ Before you begin, ensure you have the following installed:
 6. Install express: `npm install express`
 7. Install cors: `npm install cors`
 8. Install body-parser: `npm install body-parser`
-9. Start the development server: `npm start`
+9. Install mongoose: `npm install mongoose`
+10. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
