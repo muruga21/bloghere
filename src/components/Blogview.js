@@ -19,7 +19,7 @@ const Blogview = () => {
 
   return (
     <div className='w-[100%] flex justify-center'>
-      <div className='text-[#333] w-[90%] flex flex-col justify-center items-center hover:shadow-xl rounded-md'>
+      <div className='text-[#333] w-[90%] flex flex-col justify-center items-center mb-5 py-10 shadow-xl rounded-md'>
         <div className=' text-5xl sm:w-[90%] mt-10 text-center'>
           {blog.title}
         </div>

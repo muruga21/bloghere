@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 
 const Register = () => {
-
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = async (e) =>{
     e.preventDefault();
-    await fetch('http://localhost:5000/register',{
+    const Response = await fetch('http://localhost:5000/register',{
       method:'POST',
-      body: JSON.stringify({username,password}),
+      body: JSON.stringify({userName,password}),
       headers : {'Content-Type' : 'application/json'},
     })
+    if(Response.status === 400){
+      alert("userName already exists");
+    }
+    else{
+      alert("Registration success !");
+    }
+    if(Response.status === 500){
+      alert("server under maintenance !!");
+    }
   }
   return (
     <form className='flex justify-center items-center flex-col gap-10 h-[100vh] text-[#333]'>
@@ -19,10 +27,10 @@ const Register = () => {
         Register
         </div>
       <input type='text' placeholder='Email' className=' w-[300px] shadow-sm p-2'
-        value={username} 
+        value={userName} 
         onChange={(e) =>{
           console.log(e.target.value);
-          setUsername(e.target.value);
+          setUserName(e.target.value);
         }}>
         </input>
       <input type='password' placeholder='password' className=' w-[300px] shadow-sm p-2'

@@ -1,29 +1,44 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect,setRedirect] = useState(false);
 
-  const handleLogin = (e) =>{
+  const handleLogin = async (e) =>{
     e.preventDefault();
+    const Response = await fetch("http://localhost:5000/login",{
+      method :'POST',
+      body : JSON.stringify({userName,password}),
+      headers: {'Content-Type':'application/json'},
+      credentials : 'include',
+    })
+    if(Response.status === 200){
+      setRedirect(true);
+    } else {
+      alert("Wrong Credentials !!");
+    }     
   }
+
+  if(redirect){
+    return <Navigate to={'/'}/>
+  }
+
   return (
     <div className='flex justify-center items-center flex-col gap-10 h-[100vh] text-[#333]'>
       <div className='text-4xl'>
         Login
       </div>
       <input type='text' placeholder='Email' className=' w-[300px] shadow-sm p-2'
-        value={username} 
+        value={userName} 
         onChange={(e) =>{
-          console.log(e.target.value);
-          setUsername(e.target.value);
+          setUserName(e.target.value);
         }}>
         </input>
       <input type='password' placeholder='password' className=' w-[300px] shadow-sm p-2'
         value={password} 
         onChange={(e) =>{
-          console.log(e.target.value);
           setPassword(e.target.value);
         }}
       ></input>
