@@ -35,7 +35,8 @@ Before you begin, ensure you have the following installed:
 7. Install cors: `npm install cors`
 8. Install body-parser: `npm install body-parser`
 9. Install mongoose: `npm install mongoose --save`
-10. Start the development server: `npm start`
+10. Install JsonWebToken: `npm install jsonwebtoken`
+11. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
