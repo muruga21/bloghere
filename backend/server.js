@@ -3,9 +3,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const user = require("./models/user.model");
+const blog = require("./models/blogs.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer  = require('multer')
+const fs = require('fs');
+
+const uploadBlogImg = multer({ dest: 'uploads/' })
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "asdfghjkl";
@@ -79,7 +84,7 @@ app.get("/profile",(req,res)=>{
     const {token} = req.cookies;
     jwt.verify(token,secret,{},(err,info)=>{
         if(err){
-            throw err;
+            res.status(500).json("no user found");
         }
         else{
             res.json(info.userName);
@@ -91,22 +96,22 @@ app.post("/logout",(req,res)=>{
     res.cookie('token','').json('ok'); 
 })
 
-app.post("/addblog",(req,res)=>{
-    
-    const { id, userName, blogTitle, imgUrl, content, description } = req.body;
+app.post("/addblog",uploadBlogImg.single('blogImg'), async(req,res)=>{
+    const {originalname,path} = req.file;
+    const parts = originalname.split('.');
+    const ext = parts[parts.length -1];
+    fs.renameSync(path, path+'.'+ext);
 
-    const data = {
-        "id":id,
-        "userName":userName,
-        "blogTitle":blogTitle,
-        "imgUrl":imgUrl,
-        "content":content,
-        "description":description
+    const {userName, blogTitle, description, content, blogImg} = req.body;
+    const date = new Date().toDateString();
+
+    try{
+       const userDoc = await blog.create({userName, date, blogTitle, description, content, blogImg});
+       res.json("ok");
+    }catch(e){
+        res.status(500).json(e);
     }
 
-    datas.push(data);
-    console.log(datas);
-    res.sendStatus(200);
 })
 
 app.get("/blog/:blogid", (req, res) => {

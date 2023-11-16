@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Header = () => {
-    const [userName , setUserName] = useState(null);
+const Header = (props) => {
+    const {userName , setUserName} = props;
     useEffect(()=>{
         const handleUserName = async () =>{
             const Response = await fetch('http://localhost:5000/profile',{
                 credentials:'include',
             })
-            const userName = await Response.json();
-            setUserName(userName);
+            if(Response.status === 500){
+                setUserName(null);
+            }
+            else{
+                const userName = await Response.json();
+                setUserName(userName);
+            }
         }
         handleUserName();
-
     },[])
 
     const logout = async() =>{
