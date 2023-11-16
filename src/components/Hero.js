@@ -27,7 +27,7 @@ const Hero = () => {
     <section className='w-[100%] flex justify-center'>
     <Blogs/>
     </section>
-    <Link className='top-[85%] left-[70%] rounded-md sm:left-[85%] bg-[#333] text-[#f3f5f7] p-3 fixed hover:text-[#333] hover:bg-[#f3f5f7]' to={'/addblog'}>add Blog</Link>
+    <Link className='top-[85%] left-[70%] rounded-md sm:left-[85%] bg-[#333] text-[#f3f5f7] p-3 fixed hover:bg-gray-700 hover:text-white' to={'/addblog'}>add Blog</Link>
   </div>
   )
 }
