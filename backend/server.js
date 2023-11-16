@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const user = require("./models/user.model");
-const blog = require("./models/blogs.model");
+const blogModel = require("./models/blogs.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -100,16 +100,18 @@ app.post("/addblog",uploadBlogImg.single('blogImg'), async(req,res)=>{
     const {originalname,path} = req.file;
     const parts = originalname.split('.');
     const ext = parts[parts.length -1];
-    fs.renameSync(path, path+'.'+ext);
+    const newPath = path+'.'+ext;
+    fs.renameSync(path, newPath);
 
-    const {userName, blogTitle, description, content, blogImg} = req.body;
+    const {userName, blogTitle, description, content} = req.body;
     const date = new Date().toDateString();
+    const blogImg = newPath;
 
     try{
-       const userDoc = await blog.create({userName, date, blogTitle, description, content, blogImg});
-       res.json("ok");
+       const userDoc = await blogModel.create({userName, date, blogTitle, description, content, blogImg});
+       res.json(userDoc);
     }catch(e){
-        res.status(500).json(e);
+        throw e;
     }
 
 })
