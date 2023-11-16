@@ -38,7 +38,8 @@ Before you begin, ensure you have the following installed:
 10. Install JsonWebToken: `npm install jsonwebtoken`
 11. Install cookie parser: `npm install cookie-parser`
 12. Install react quill: `npm install react-quill`
-13. Start the development server: `npm start`
+13. Install react multer: `npm install multer`
+14. Start the development server: `npm start`
    
 
 Your blog website should now be accessible at `http://localhost:3000`.
