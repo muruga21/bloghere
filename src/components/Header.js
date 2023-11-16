@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Header = (props) => {
-    const {userName , setUserName} = props;
+const Header = () => {
+    const [userName , setUserName] = useState(null);
     useEffect(()=>{
         const handleUserName = async () =>{
             const Response = await fetch('http://localhost:5000/profile',{

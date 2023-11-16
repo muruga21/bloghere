@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const user = require("./models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "asdfghjkl";
@@ -88,8 +88,7 @@ app.get("/profile",(req,res)=>{
 });
 
 app.post("/logout",(req,res)=>{
-    const {token} = req.cookies;
-    res.cookie(token,'').json('ok'); 
+    res.cookie('token','').json('ok'); 
 })
 
 app.post("/addblog",(req,res)=>{
