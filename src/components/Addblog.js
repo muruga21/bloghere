@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'
 
 const Addblog = () => {
 
@@ -6,6 +8,23 @@ const Addblog = () => {
   const [imgUrl, setImgurl] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, false] }],
+      ['bold', 'italic', 'underline','strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image'],
+      ['clean']
+    ],
+  }
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image'
+  ]
 
   const handleAddblog = async (e) =>{
     if(blogTitle==="" || imgUrl==="" || description==="" || content===""){
@@ -31,26 +50,16 @@ const Addblog = () => {
         }}
         required
       />
-      <input type='text' placeholder='Enter your Image url' className='bg-[#f3f5f7] border-b-2 border-[#333] p-2 w-full mt-5 focus:ring-0 focus:ring-opacity-0 outline-none'
-        onChange={(e)=>{
-          setImgurl(e.target.value);
-        }}
-        required
-      />
+      <input type='file' className='bg-[#f3f5f7] border-b-2 border-[#333] p-2 w-full mt-5 focus:ring-0 focus:ring-opacity-0 outline-none'/>
       <textarea type='text' placeholder='Blog Description' className='bg-[#f3f5f7] border-b-2 border-[#333] p-2 w-full mt-5 focus:ring-0 focus:ring-opacity-0 outline-none'
         onChange={(e)=>{
           setDescription(e.target.value);
         }}
         required
       />
-      <textarea type='text' placeholder='Blog Content' className='bg-[#f3f5f7] border-b-2 border-[#333] p-2 h-[200px] w-full mt-5 focus:ring-0 focus:ring-opacity-0 outline-none'
-        onChange={(e)=>{
-          setContent(e.target.value);
-        }}
-        required
-      />
+      <ReactQuill modules={modules} formats={formats} placeholder='Write your Blog Content here...' className='mt-5' onChange={(e)=>{setContent(e.target.value)}} />
       <div className='flex justify-center items-center'>
-        <button className='mt-10 bg-[#333] text-[#f3f5f7] p-2 pr-6 pl-6 rounded-lg'
+        <button className='mt-10 w-[60%] bg-[#333] text-[#f3f5f7] p-2 pr-6 pl-6 rounded-lg'
           onClick={handleAddblog}
         >
             Add
