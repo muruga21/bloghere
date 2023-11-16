@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Register = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect,setRedirect] = useState(false);
 
   const handleRegister = async (e) =>{
     e.preventDefault();
@@ -16,11 +17,17 @@ const Register = () => {
     }
     else{
       alert("Registration success !");
+      setRedirect(true);
     }
     if(Response.status === 500){
       alert("server under maintenance !!");
     }
   }
+
+  if(redirect){
+    return <Navigate to={'/'}/>
+  }
+
   return (
     <form className='flex justify-center items-center flex-col gap-10 h-[100vh] text-[#333]'>
       <div className='text-4xl'>
