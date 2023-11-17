@@ -18,27 +18,33 @@ const Blogs = () => {
     
     <div className='flex flex-col item-center mt-10 sm:w-[80%]'>
       <div className='flex justify-center items-center'>
-      <Search/>
+        <Search/>
       </div>
-       <div className='flex justify-center items-center flex-col-reverse gap-10 sm:p-10'>
+       <div className='w-full p-8'>
         {
-          blogs.map((blog ,key)=>{
-            return(
-              <Link to={'/'+blog.blogid} key={key}>
-              <div className='flex flex-col p-5 md:flex-row gap-5 hover:shadow-lg rounded-md border-b-2'>
-                <div className=' w-full sm:min-w-[35%]'>
-                  <img src={blog.image}></img>
+          blogs.map((blog,key)=>{
+            return (
+              <Link className='w-full' to={'/'+blog._id} key={key}>
+                <div className='flex flex-col sm:flex-row w-full rounded-md shadow-md'>
+                  <div className='w-[100%] sm:w-[35%] overflow-hidden rounded-md p-5'>
+                    <img src={'http://localhost:5000/'+blog.blogImg} className=' rounded-md max-w-[100%] max-h-[100%]'></img>
+                  </div>
+                  <div className='w-[65%] h-[100%] px-10 flex flex-col gap-10 my-5'>
+                    <div>
+                      <div>{blog.blogTitle}</div>
+                      <div className='flex gap-3'>
+                        <div>{blog.userName}</div>
+                        <div>{blog.date}</div>
+                      </div>
+                    </div>
+                    <div>{blog.description}</div>
+                  </div>
                 </div>
-                <div className=' w-full sm:min-w-[65%] flex flex-col justify-between gap-5'>
-                  <div>{blog.title}</div>
-                  <div className=' font-sans'>{blog.content}</div>
-                </div>
-              </div>
               </Link>
             )
           })
         }
-      </div>
+       </div>
     </div>
   )
 }

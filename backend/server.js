@@ -19,6 +19,7 @@ const app = express();
 app.use(cors({credentials:true, origin:'http://localhost:3000'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname+'/uploads'));
 
 const datas = require("../src/components/datas.json");
 const {users} = require("../src/components/userdatas.json");
@@ -43,9 +44,10 @@ app.get("/",(req,res)=>{
     res.send("done")
 })
 
-app.get("/blogs",(req,res)=>{
+app.get("/blogs", async(req,res)=>{
+    const blogDocs = await blogModel.find();
     console.log("request for blogs");
-    res.json(datas);
+    res.json(blogDocs);
 })
 
 app.post("/register", async(req,res)=>{
@@ -116,13 +118,10 @@ app.post("/addblog",uploadBlogImg.single('blogImg'), async(req,res)=>{
 
 })
 
-app.get("/blog/:blogid", (req, res) => {
+app.get("/blog/:blogid",async(req, res) => {
     const {blogid} = req.params;
-    const blog = datas.find(datas => datas.blogid == blogid);
-    if(!blog){
-        console.log("Empty");
-        res.status(404).send('blog not found');
-    }
-    res.json(blog);
+    const blogDoc = await blogModel.findOne({_id:blogid});
+    res.json(blogDoc);
+    
   });
   
