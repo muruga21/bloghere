@@ -9,6 +9,7 @@ import Blogview from './components/Blogview';
 import Login from './components/Login';
 import Register from './components/Register';
 import Addblog from './components/Addblog';
+import EditBlog from './components/EditBlog';
 
 const approuter = createBrowserRouter([
   {
@@ -25,6 +26,9 @@ const approuter = createBrowserRouter([
       },{
         path:'/addblog',
         element:<Addblog/>
+      },{
+        path:'/edit/:blogid',
+        element:<EditBlog/>
       }
     ]
   },

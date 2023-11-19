@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Blogview = () => {
     const [blog , setBlogs] = useState([]);
@@ -48,7 +48,13 @@ const Blogview = () => {
                   <div>{blog.date}</div>
                 </div>
                 <div>
-                  <button className='px-6 py-3 bg-[#333] text-[#f3f5f7] rounded-md'>Edit Blog</button>
+                  <Link to={`/edit/${blogid}`}>
+                  {
+                    (userName == blog.userName)?(
+                      <button className='px-6 py-3 bg-[#333] text-[#f3f5f7] rounded-md'>Edit Blog</button>
+                    ):("")
+                  }
+                  </Link>
                 </div>
               </div>
           </div>

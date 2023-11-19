@@ -7,13 +7,21 @@ import Header from './components/Header';
 
 function App() {
   const [userName , setUserName] = useState(null);
+  // const [mousePositon , setMousePosition] = useState(null);
 
-  useEffect(()=>{
-    console.log(userName);
-  },[userName])
+  // useEffect(()=>{
+  //   const handleMouseMove = (e)=>{
+  //     setMousePosition({
+  //       x: e.clientX,
+  //       y: e.clientY,
+  //     })
+  //   }
+  //   window.addEventListener('mousemove', handleMouseMove)
+  // },[userName])
 
   return (
     <div>
+      {/* <div className="h-3 w-3 rounded-full bg-black absolute" style={{top: mousePositon.y , left: mousePositon.x}}></div> */}
       <section>
         <Header userName = {userName} setUserName = {setUserName}/>
       </section>

@@ -122,6 +122,5 @@ app.get("/blog/:blogid",async(req, res) => {
     const {blogid} = req.params;
     const blogDoc = await blogModel.findOne({_id:blogid});
     res.json(blogDoc);
-    
   });
   
