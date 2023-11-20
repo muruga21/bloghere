@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
+import { Navigate } from 'react-router-dom';
 
 const Addblog = () => {
   const [userName, setUserName] = useState('');
@@ -8,6 +9,7 @@ const Addblog = () => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [blogImg , setBlogImg] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(()=>{
     const handleUserName = async () =>{
@@ -66,12 +68,15 @@ const Addblog = () => {
         method:'POST',
         body: blogdata,
       })
+      if(response.ok){
+        setRedirect(true);
+      }
     }
   }
 
-  // if(!userName){
-  //   return( <div className=' text-5xl mt-10 py-10'>Please Login to Create a Blog..!</div>);
-  // }
+  if(redirect){
+    <Navigate to={'/'}/>
+  }
 
   return (
     <form className='w-[80%] flex flex-col justify-center'>

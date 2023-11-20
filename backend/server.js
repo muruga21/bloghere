@@ -104,7 +104,7 @@ app.post("/addblog",uploadBlogImg.single('blogImg'), async(req,res)=>{
     const ext = parts[parts.length -1];
     const newPath = path+'.'+ext;
     fs.renameSync(path, newPath);
-
+    
     const {userName, blogTitle, description, content} = req.body;
     const date = new Date().toDateString();
     const blogImg = newPath;
@@ -123,4 +123,27 @@ app.get("/blog/:blogid",async(req, res) => {
     const blogDoc = await blogModel.findOne({_id:blogid});
     res.json(blogDoc);
   });
-  
+
+app.put("/edit/:blogid",uploadBlogImg.single('blogImg'),async(req,res)=>{
+    try{
+        const {originalname,path} = req.file;
+        const parts = originalname.split('.');
+        const ext = parts[parts.length -1];
+        const newPath = path+'.'+ext;
+        fs.renameSync(path, newPath);
+
+        const {blogid} = req.params;
+        const {userName, blogTitle, description, content} = req.body;
+        const date = new Date().toDateString();
+        const blogImg = newPath;
+
+        try{
+            const userDoc = await blogModel.updateOne({_id:blogid},{$set:{userName, date, blogTitle, description, content, blogImg}});
+            res.json(userDoc);
+        }catch(e){
+            throw e;
+        }
+    } catch(e){
+        res.status(500).send({message:"unknown error"});
+    }
+})
