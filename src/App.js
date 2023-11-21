@@ -6,8 +6,8 @@ import Header from './components/Header';
 
 
 function App() {
-  const [userName , setUserName] = useState(null);
-  // const [mousePositon , setMousePosition] = useState(null);
+  const [userName , setUserName] = useState();
+  // const [mousePositon , setMousePosition] = useState({});
 
   // useEffect(()=>{
   //   const handleMouseMove = (e)=>{
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      {/* <div className="h-3 w-3 rounded-full bg-black absolute" style={{top: mousePositon.y , left: mousePositon.x}}></div> */}
+      {/* <div className="h-5 w-5 rounded-full bg-black fixed" style={{top: mousePositon.y-5 , left: mousePositon.x-5}}></div> */}
       <section>
         <Header userName = {userName} setUserName = {setUserName}/>
       </section>

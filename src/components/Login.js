@@ -26,28 +26,38 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center items-center flex-col gap-10 h-[100vh] text-[#333]'>
-      <div className='text-4xl'>
-        Login
+    <div className='h-[100vh] w-full flex justify-center items-center'>
+      <div className='flex justify-center items-center w-[80%]'>
+      <div className='flex justify-center items-center flex-col h-[100%] w-full md:w-[45%] border-transparent md:border-2 md:border-gray-200 py-20 rounded-lg shadow-lg'>
+        <div class="login">
+            <h2>Loign</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input type="text" required onChange={(e)=>setUserName(e.target.value)} />
+                    <label>User Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input type="password" required onChange={(e)=>setPassword(e.target.value)}/>
+                    <label>Password</label>
+                </div>
+                <div class="remember">
+                    {/* <lable><input type="checkbox" />Remember me</lable> */}
+                    <a href="#">Forget Password?</a>
+                </div>
+                <button type="submit" class="btn" onClick={handleLogin} >Login</button>
+                <div class="register">
+                    <p>Don't have any account ? <Link to="/register" class="register-link">Register</Link></p>
+                </div>
+            </form>
+        </div>
       </div>
-      <input type='text' placeholder='Email' className=' w-[300px] shadow-sm p-2'
-        value={userName} 
-        onChange={(e) =>{
-          setUserName(e.target.value);
-        }}>
-        </input>
-      <input type='password' placeholder='password' className=' w-[300px] shadow-sm p-2'
-        value={password} 
-        onChange={(e) =>{
-          setPassword(e.target.value);
-        }}
-      ></input>
-      <Link to={'/register'}>new user ?  Register</Link>
-      <button className='bg-[#333] text-[#f3f7f9] p-2 rounded-md hover:bg-transparent hover:text-[#333]'
-      onClick={handleLogin}
-      >
-        Login
-      </button>
+      </div>
     </div>
   )
 }

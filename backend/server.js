@@ -31,7 +31,6 @@ app.listen("5000",()=>{
 mongoose.connect("mongodb+srv://muruga:murugaperumal@cluster0.liatxyy.mongodb.net/");
 
 const db = mongoose.connection;
-
 db.on("error", ()=>{
     console.log("Connectin was not success");
 })
@@ -111,7 +110,7 @@ app.post("/addblog",uploadBlogImg.single('blogImg'), async(req,res)=>{
 
     try{
        const userDoc = await blogModel.create({userName, date, blogTitle, description, content, blogImg});
-       res.json(userDoc);
+       res.json(userDoc).status(200);
     }catch(e){
         throw e;
     }

@@ -68,7 +68,7 @@ const Addblog = () => {
         method:'POST',
         body: blogdata,
       })
-      if(response.ok){
+      if(response.status === 200){
         setRedirect(true);
       }
     }

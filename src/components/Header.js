@@ -28,7 +28,7 @@ const Header = (props) => {
     }
 
   return (
-    <nav className='flex justify-between mr-10 ml-10 mt-5 text-[#333]'>
+    <nav className='flex justify-between mr-5 sm:mr-10 ml-5 sm:ml-10 mt-5 text-[#333]'>
         <div className="font-bold text-2xl md:text-4xl">
             BLOGHERE
         </div>
