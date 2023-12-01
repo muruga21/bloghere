@@ -30,7 +30,7 @@ const Login = () => {
       <div className='flex justify-center items-center w-[80%]'>
       <div className='flex justify-center items-center flex-col h-[100%] w-full md:w-[45%] border-transparent md:border-2 md:border-gray-200 py-20 rounded-lg shadow-lg'>
         <div class="login">
-            <h2>Loign</h2>
+            <h2>Login</h2>
             <form action="#">
                 <div class="input-box">
                     <span class="icon">
