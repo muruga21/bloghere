@@ -13,7 +13,6 @@ Welcome to BlogHere! This platform allows users to write and share their blogs. 
 - [Contributing](#contributing)
 - [License](#license)
 
-
 ## Features
 - User-friendly blog creation and sharing.
 - Powered by React, MongoDB, Node, and Express for a robust and scalable solution.
