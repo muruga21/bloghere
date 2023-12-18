@@ -10,35 +10,43 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Addblog from './components/Addblog';
 import EditBlog from './components/EditBlog';
+import Error404 from './components/Error404';
 
 const approuter = createBrowserRouter([
   {
     path: '/',
     element: <App/>,
+    errorElement:<Error404/>,
     children:[
       {
         path:'/',
-        element:<Hero/>
+        element:<Hero/>,
+        errorElement:<Error404/>
       },
       {
         path:'/:blogid',
-        element:<Blogview/>
+        element:<Blogview/>,
+        errorElement:<Error404/>
       },{
         path:'/addblog',
-        element:<Addblog/>
+        element:<Addblog/>,
+        errorElement:<Error404/>
       },{
         path:'/edit/:blogid',
-        element:<EditBlog/>
+        element:<EditBlog/>,
+        errorElement:<Error404/>
       }
-    ]
+    ],
   },
   {
     path:'/login',
-    element:<Login/>
+    element:<Login/>,
+    errorElement:<Error404/>
   },
   {
     path:'/register',
-    element:<Register/>
+    element:<Register/>,
+    errorElement:<Error404/>
   }
 ])
 
