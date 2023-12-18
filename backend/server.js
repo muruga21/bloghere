@@ -28,7 +28,7 @@ app.listen("5000",()=>{
     console.log("listening on 5000");
 })
 
-mongoose.connect("your mongodb atlas connection url here");
+mongoose.connect("mongodb+srv://muruga:murugaperumal@cluster0.liatxyy.mongodb.net/");
 
 const db = mongoose.connection;
 db.on("error", ()=>{
