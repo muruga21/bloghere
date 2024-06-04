@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
-import {Navigate, useParams } from 'react-router-dom'
+import {Navigate, useParams,useNavigate  } from 'react-router-dom'
 
 const EditBlog = () => {
     const[blogs , setBlogs] = useState({});
@@ -12,6 +12,7 @@ const EditBlog = () => {
     const[blogImg, setBlogImg] = useState();
     const {blogid} = useParams();
     const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const handleUserName = async () =>{
@@ -98,7 +99,7 @@ const EditBlog = () => {
       ]
 
     if(redirect){
-        return <Navigate to={'/'}/>
+        navigate('/')
     }
 
     return(

@@ -28,7 +28,7 @@ app.listen("5000",()=>{
     console.log("listening on 5000");
 })
 
-mongoose.connect("mongodb+srv://muruga:murugaperumal@cluster0.liatxyy.mongodb.net/");
+mongoose.connect("mongodb+srv://kishore:kishore@mern.d6qyuyj.mongodb.net/BlogHereDb?retryWrites=true&w=majority&appName=Mern");
 
 const db = mongoose.connection;
 db.on("error", ()=>{
@@ -43,10 +43,30 @@ app.get("/",(req,res)=>{
     res.send("done")
 })
 
-app.get("/blogs", async(req,res)=>{
+app.get("/blogs/:val", async(req,res)=>{
     const blogDocs = await blogModel.find();
-    console.log("request for blogs");
-    res.json(blogDocs);
+    const val = req.params.val
+    console.log("value"+ val)
+    console.log("blogsd:"+val);
+    if(val !="NULL" && val!=""){
+        console.log("testTTTT");
+        temp =[]
+        for(var i=0;i<blogDocs.length;i++){
+            var title = blogDocs[i].blogTitle.toLowerCase();
+            var value = val.toLowerCase();
+          if(title.indexOf(value) !==-1){
+              console.log("title"+blogDocs[i].blogTitle)
+              temp.push(blogDocs[i]);
+          }
+        }
+        console.log("temp" + temp)
+        res.json(temp);
+    }
+    else{
+        console.log("request for blogs" + blogDocs.toString());
+        res.json(blogDocs);
+    }
+ 
 })
 
 app.post("/register", async(req,res)=>{
@@ -145,4 +165,22 @@ app.put("/edit/:blogid",uploadBlogImg.single('blogImg'),async(req,res)=>{
     } catch(e){
         res.status(500).send({message:"unknown error"});
     }
+})
+
+app.delete('/deleteBlog/:blogid',async (req,res)=>{
+    try{
+        const {blogid} = req.params;
+        const data =await blogModel.findOne({_id:blogid})
+        if(data){
+        const userDoc = await blogModel.deleteOne({_id:blogid});
+        res.json(userDoc);}
+        else{
+            res.status(400).send({message:"blog not found"});
+        }
+    }
+    catch(e){
+        res.status(500).send({message:e});
+    }
+
+
 })

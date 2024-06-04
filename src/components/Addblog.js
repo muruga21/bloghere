@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'
-import { Navigate } from 'react-router-dom';
+import { Navigate,useNavigate } from 'react-router-dom';
 
 const Addblog = () => {
   const [userName, setUserName] = useState('');
@@ -10,6 +10,7 @@ const Addblog = () => {
   const [content, setContent] = useState("");
   const [blogImg , setBlogImg] = useState('');
   const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const handleUserName = async () =>{
@@ -69,13 +70,14 @@ const Addblog = () => {
         body: blogdata,
       })
       if(response.status === 200){
+        
         setRedirect(true);
       }
     }
   }
 
   if(redirect){
-    <Navigate to={'/'}/>
+    navigate('/')
   }
 
   return (

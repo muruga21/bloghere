@@ -11,6 +11,7 @@ import Register from './components/Register';
 import Addblog from './components/Addblog';
 import EditBlog from './components/EditBlog';
 import Error404 from './components/Error404';
+import Blogs from './components/Blogs';
 
 const approuter = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const approuter = createBrowserRouter([
     children:[
       {
         path:'/',
+        element:<Hero/>,
+        errorElement:<Error404/>
+      },
+      {
+        path:'/delete/:blogid',
         element:<Hero/>,
         errorElement:<Error404/>
       },
