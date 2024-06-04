@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import Search from './Search';
 import { Link } from 'react-router-dom';
+import search from '../assets/search.png'
 
 const Blogs = () => {
   const [blogs,setBlogs] = useState([]);
+  const [val, setVal] = useState('NULL');
 
-  useEffect(()=>{
     const datas = async ()=> {
-      const response = await fetch("http://localhost:5000/blogs");
+      const response = await fetch(`http://localhost:5000/blogs/${val}`);
       const blogdata = await response.json();
       setBlogs(blogdata);
     }
-    datas();
-  },[])
 
-  return (
+  useEffect(()=>{
+    datas()
+  },[val])
+  
+ return (
     
     <div className='flex flex-col item-center mt-10 sm:w-[80%]'>
       <div className='flex justify-center items-center'>
-        <Search/>
+      <div className='w-90 h-10 shadow-md flex flex-row justify-center items-center p-3 rounded-md'>
+        <div><img src={search} width={20}></img></div>
+        <div><input className=' h-10 bg-[#f3f5f7] p-5 border-none border-0 focus:borer-none focus:outline-none' placeholder='Search' onChange={(val)=>{
+          console.log(val.target.value)
+          setVal(val.target.value)}}>
+       </input></div>
+        <div><button className=' h-[100%]'>Search</button></div>
+    </div>
       </div>
        <div className='w-auto p-8 flex flex-col-reverse'>
         {

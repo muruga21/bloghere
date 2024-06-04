@@ -5,6 +5,14 @@ const Blogview = () => {
     const [blog , setBlogs] = useState([]);
     const [userName, setUserName] = useState('');
     const {blogid} = useParams();
+    const handleDelete = async()=>{
+      const response = await fetch(`http://localhost:5000/deleteBlog/${blogid}`,{
+        method:'DELETE',
+        headers:{"request-blogview":"blogview/request"}
+      });
+      const blogdata = await response.json();
+      setBlogs(blogdata);
+    }
     useEffect(()=>{
       const handleUserName = async () =>{
         const Response = await fetch('http://localhost:5000/profile',{
@@ -18,6 +26,8 @@ const Blogview = () => {
             setUserName(userName);
         }
       }
+
+   
       const data = async () =>{
         const response = await fetch(`http://localhost:5000/blog/${blogid}`,{
           method:'GET',
@@ -33,8 +43,11 @@ const Blogview = () => {
   return (
     <div className='w-[100%] flex justify-center'>
       <div className='text-[#333] sm:w-[90%] flex flex-col justify-center items-center mb-5 py-10 shadow-xl rounded-md'>
-        <div className=' text-3xl sm:text-5xl sm:w-[90%] mt-10 sm:px-5'>
-          {blog.blogTitle}
+        <div className=' text-3xl sm:text-5xl sm:w-[90%] mt-10 sm:px-5 felx flex-row'>
+         <Link to={'/'}>
+         <button className='mx-10'> {"<-"} </button>  
+         </Link>
+         {blog.blogTitle}
         </div>
         <div className='flex flex-col sm:flex-row sm:w-[90%] sm:pt-10 sm:pb-10 justify-center items-center gap-5'>
           <div className='w-[90%] mt-5 sm:w-[40%] sm:mt-0'>
@@ -54,6 +67,11 @@ const Blogview = () => {
                       <button className='px-6 py-3 bg-[#333] text-[#f3f5f7] rounded-md'>Edit Blog</button>
                     ):("")
                   }
+                  </Link>
+                  <Link to={`/`}>
+                 { (userName == blog.userName)?(
+                    <button onClick={()=>handleDelete()} className='px-6 py-3 bg-[#333] text-[#f3f5f7] rounded-md ml-10'>Delete Blog</button>
+                    ):("")}
                   </Link>
                 </div>
               </div>
